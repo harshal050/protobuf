@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message Person {
+    string name = 1;
+    string item = 2;
+    int32 balance = 3;
+}
+
+service PersonService{
+    rpc Buy(InputPersonBuyData) returns (InputPersonBuyData);
+    rpc GetPersonDetail(PersonInputWithName) returns (Person);
+}
+
+message PersonInputWithName{
+    string name = 1;
+}
+
+message InputPersonBuyData{
+    string name = 1;
+    string item = 2;
+    int32 balance = 3;
+    int32 price = 4;
+}
+
+message OrderDetails{
+  string name = 1;
+  StatusType statusType = 0; 
+}
+
+enum StatusType{
+  DONE=0;
+  NOTDONE=1;
+}
